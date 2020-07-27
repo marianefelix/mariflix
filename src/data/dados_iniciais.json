@@ -1,0 +1,122 @@
+{
+  "categorias": [
+    {
+      "titulo": "Mulheres e TI",
+      "link": "",
+      "cor": "var(--frontEnd)",
+      "link_extra": {
+        "text": "Para te inspirar mais, mulher",
+        "url": "https://www.alura.com.br/artigos/momentos-historicos-das-mulheres-na-tecnologia"
+      },
+      "videos": [
+        {
+          "titulo": "Mulheres na Computação | Camila Achutti | TEDxUSP",
+          "url": "https://www.youtube.com/watch?v=Qq9h2vVBZmQ"
+        },
+        {
+          "titulo": "WoMakersCode: Mulheres na Tecnologia",
+          "url": "https://www.youtube.com/watch?v=Ah05cgRap0c"
+        },
+        {
+          "titulo": "Mulheres na tecnologia, representatividade e 10k inscritos 👩🏻‍💻",
+          "url": "https://www.youtube.com/watch?v=nzL2z-U9tu8"
+        },
+        {
+          "titulo": "QUANDO PENSAMOS EM PROGRAMAÇÃO",
+          "url": "https://www.youtube.com/watch?v=AdFU6l4fL_E&list=WL&index=2&t=0s"
+        },
+        {
+          "titulo": "Mulher + Tecnologia: Combinação Perfeita (Minha História - Vanessa Weber) // Vlog #115",
+          "url": "https://www.youtube.com/watch?v=yJTsA4hC_fw"
+        }        
+      ]
+    },
+    {
+      "titulo": "Back End",
+      "cor": "var(--backEnd)",
+      "link_extra": {
+        "text": "",
+        "url": ""
+      },
+      "videos": [
+        {
+          "titulo": "Como o Github pode ser útil",
+          "url": "https://www.youtube.com/watch?v=nLsWot2zSLc"
+        },
+        {
+          "titulo": "Coders4Tips - S01E04: GitHub CLI - Uma Nova Experiência no Github!",
+          "url": "https://www.youtube.com/watch?v=6o6-bKOZOEY"
+        },
+        {
+          "titulo": "4 mitos sobre programação #HipstersPontoTube",
+          "url": "https://www.youtube.com/watch?v=yj0FR_gm0sM"
+        },
+        {
+          "titulo": "Preciso saber matemática para programar? #HipstersPontoDicas",
+          "url": "https://www.youtube.com/watch?v=WZo8s-zsfuY"
+        },
+        {
+          "titulo": "API: Dicionário do Programador",
+          "url": "https://www.youtube.com/watch?v=vGuqKIRWosk"
+        },
+        {
+          "titulo": "Qual é a melhor linguagem de programação? #HipstersPontoTube",
+          "url": "https://www.youtube.com/watch?v=Uh-GNH-t89w"
+        }
+      ]
+    },
+    {
+      "titulo": "Front End",
+      "cor": "#9cd33b",
+      "link_extra": {
+        "text": "",
+        "url": "https://www.alura.com.br/formacao-data-science"
+      },
+      "videos": [
+        {
+          "titulo": "Componentização com VanillaJS #AluraMais",
+          "url": "https://www.youtube.com/watch?v=LatCKpcOMak"
+        },
+        {
+          "titulo": "Como me tornei desenvolvedora",
+          "url": "https://www.youtube.com/watch?v=Ft3h4dG33rw"
+        },
+        {
+          "titulo": "O que faz uma desenvolvedora front-end? #HipstersPontoTube",
+          "url": "https://www.youtube.com/watch?v=ZY3-MFxVdEw&t=11s"
+        }
+      ]
+    },
+    {
+      "titulo": "Séries",
+      "cor": "orange",
+      "videos": [
+        {
+          "titulo": "Blood & Water | Season 1 | Official Trailer | Netflix",
+          "url": "https://www.youtube.com/watch?v=2m0Cm2kMOBU"
+        },
+        {
+          "titulo": "Coisa Mais Linda | Trailer Oficial [HD] | Netflix",
+          "url": "https://www.youtube.com/watch?v=gi5pXrQhZxQ"
+        },
+        {
+          "titulo": "Perdidos no Espaço | Trailer oficial HD] | Netflix",
+          "url": "https://www.youtube.com/watch?v=GYn4r6nV0tw"
+        },
+        {
+          "titulo": "OUTLANDER - Season 1 Trailer",
+          "url": "https://www.youtube.com/watch?v=PFFKjptRr7Y"
+        },
+        {
+          "titulo": "Another Life - Katee Sackhoff | Official Trailer | Netflix",
+          "url": "https://www.youtube.com/watch?v=qAtBbgtMnZ8"
+        },
+        {
+          "titulo": "Reinado | Trailer da 1ª Temporada | Globoplay",
+          "url": "https://www.youtube.com/watch?v=IS_ikF3jUAM"
+        }
+      ]
+    }
+    
+  ]
+}

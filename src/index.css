@@ -1,0 +1,39 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto Slab', serif;
+}
+
+:root{
+  --primary: #3CCBCE;
+  --black: #000000;
+  --grayDark: #141414;
+  --blackLighter: #9E9E9E;
+  --grayLight: #F5F5F5;
+  --grayMedium: #e5e5e5;
+  --white: #FFFFFF;
+  --frontEnd: #085A8A;
+  --backEnd: #0D7173;
+}
+
+html,
+body{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  color: inherit;
+}
+
+ul::-webkit-scrollbar {
+  height: 6px;
+} 
+
+ul::-webkit-scrollbar-thumb {   
+  background-color: gray;   
+  opacity: .5;
+}
+
+ul::-webkit-scrollbar-track-piece {
+  background-color: white;
+}
