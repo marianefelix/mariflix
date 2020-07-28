@@ -118,7 +118,7 @@ export const WatchButton = styled.a`
   transition: opacity .3s;
   display: none;
   /* adicionei */
-  width: 25%;
+  width: 110px;
   margin-left: auto;
   margin-right: auto;
   

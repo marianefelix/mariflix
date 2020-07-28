@@ -28,9 +28,9 @@ const Button = styled.button `
         left: 0;
         right: 0;
         bottom: 0;
-        background: var(--primary);
+        background: var(--grayDark);
         border-radius: 0;
-        border: 0;
+        border-top: 1px solid var(--primary);
         text-align: center;
     }
 }

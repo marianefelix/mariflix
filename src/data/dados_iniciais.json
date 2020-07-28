@@ -3,7 +3,7 @@
     {
       "titulo": "Mulheres e TI",
       "link": "",
-      "cor": "var(--frontEnd)",
+      "cor": "var(--primary)",
       "link_extra": {
         "text": "Para te inspirar mais, mulher",
         "url": "https://www.alura.com.br/artigos/momentos-historicos-das-mulheres-na-tecnologia"
@@ -33,7 +33,7 @@
     },
     {
       "titulo": "Back End",
-      "cor": "var(--backEnd)",
+      "cor": "var(--primary)",
       "link_extra": {
         "text": "",
         "url": ""
@@ -67,7 +67,7 @@
     },
     {
       "titulo": "Front End",
-      "cor": "#9cd33b",
+      "cor": "var(--primary)",
       "link_extra": {
         "text": "",
         "url": "https://www.alura.com.br/formacao-data-science"
@@ -89,7 +89,7 @@
     },
     {
       "titulo": "Séries",
-      "cor": "orange",
+      "cor": "var(--primary)",
       "videos": [
         {
           "titulo": "Blood & Water | Season 1 | Official Trailer | Netflix",
