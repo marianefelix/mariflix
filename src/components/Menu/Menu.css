@@ -24,9 +24,6 @@
     background: var(--black);
     border-bottom: 2px solid var(--primary);
 }
-body {
-    --bodyPaddingTop: 94px;
-}
 
 @media (max-width: 800px) {
     .Menu {

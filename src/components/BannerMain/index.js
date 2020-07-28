@@ -35,7 +35,7 @@ export default function BannerMain({
           <VideoIframeResponsive
             youtubeID={youTubeID}
           />
-          {/* modifiquei o button para link, pois nao estava direcionando para o link do video */}
+          {/* modifiquei o button para a, pois nao estava direcionando para o link do video */}
           <WatchButton target="_blank" href={url}>
             Assistir
           </WatchButton>
