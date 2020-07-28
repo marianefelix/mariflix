@@ -100,7 +100,7 @@ export const BannerMainContainer = styled.section`
   }
 `;
 
-export const WatchButton = styled.button`
+export const WatchButton = styled.a`
   font-family: 'Roboto', sans-serif;
   box-sizing: border-box;
   cursor: pointer;
@@ -111,14 +111,17 @@ export const WatchButton = styled.button`
   outline: none;
   border-radius: 5px;
   text-decoration: none;
-  display: inline-block;
   border: 1px solid transparent;
   color: var(--black);
   background: var(--white);
   border-color: var(--black);
   transition: opacity .3s;
   display: none;
-  margin: 0 auto;
+  width: 25%;
+  margin-left: auto;
+  margin-right: auto;
+  
+
   @media (max-width: 800px) {
     display: block;
   }

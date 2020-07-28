@@ -37,3 +37,9 @@ ul::-webkit-scrollbar-thumb {
 ul::-webkit-scrollbar-track-piece {
   background-color: white;
 }
+
+#root{
+  min-height: calc(100vh - var(--bodyPaddingTop));
+  display: flex;
+  flex-direction: column;
+}

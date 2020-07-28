@@ -26,7 +26,6 @@
 }
 body {
     --bodyPaddingTop: 94px;
-    padding-top: var(--bodyPaddingTop);
 }
 
 @media (max-width: 800px) {
@@ -37,19 +36,6 @@ body {
 
     body {
     --bodyPaddingTop: 40px;
-    padding-top: var(--bodyPaddingTop);
     }
 }
 
-@media (max-width: 800px) {
-    a.ButtonLink {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--primary);
-    border-radius: 0;
-    border: 0;
-    text-align: center;
-    }
-}
