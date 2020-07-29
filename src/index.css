@@ -20,25 +20,9 @@ body{
   margin: 0;
   padding: 0;
 }
-body {
-  --bodyPaddingTop: 94px;
-}
 
 a{
   color: inherit;
-}
-
-ul::-webkit-scrollbar {
-  height: 6px;
-} 
-
-ul::-webkit-scrollbar-thumb {   
-  background-color: gray;   
-  opacity: .5;
-}
-
-ul::-webkit-scrollbar-track-piece {
-  background-color: white;
 }
 
 #root{
