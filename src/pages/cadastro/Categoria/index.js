@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
+
+
 
 function CadastroCategoria(){
     const valoresIniciais = {
@@ -51,18 +54,14 @@ function CadastroCategoria(){
                     onChange={handleChange}
                 />
                 
-                {/* fazer textarea funcionar como form field */}
-                <div>
-                    <label>
-                        Descrição:
-                        <textarea 
-                        type="text"
-                        value={valores.descricao}
-                        name="descricao"
-                        onChange={handleChange}
-                        />
-                    </label>
-                </div>
+                <FormField   
+                    label="Descrição"
+                    type="textarea"
+                    value={valores.descricao}
+                    name="descricao"
+                    onChange={handleChange}
+                />       
+                   
                 <FormField 
                     label= "Cor"
                     type="color"
@@ -70,8 +69,7 @@ function CadastroCategoria(){
                     name="cor"
                     onChange={handleChange}
                 />
-                    
-                <button>Cadastrar</button>
+                <Button>Cadastrar</Button>
             </form>
             
             <ul>
@@ -84,7 +82,7 @@ function CadastroCategoria(){
                 })}
             </ul>
 
-            <Link to="/">Ir pra home</Link>
+            <Link to="/" style={{textDecoration: 'none', color: '#3CCBCE' }}>Ir pra home</Link>
         </PageDefault>
     );
 }
