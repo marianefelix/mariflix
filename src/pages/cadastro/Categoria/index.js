@@ -3,32 +3,18 @@ import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
-
-
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria(){
     const valoresIniciais = {
-        nome: '',
+        titulo: '',
         descricao: '',
         cor: ''
     }
 
+    const { handleChange, valores, clearForm } = useForm(valoresIniciais);
+
     const [categorias, setCategorias] = useState([]);
-    const [valores, setValores] = useState(valoresIniciais);
-
-    function setValor(chave, valor){
-        setValores({
-            ...valores,
-            [chave]: valor
-        })
-    }
-
-    function handleChange(infos){
-        setValor(
-            infos.target.getAttribute(['name']), 
-            infos.target.value
-        );
-    }
 
     useEffect( () => {
         
@@ -53,7 +39,7 @@ function CadastroCategoria(){
     
     return(
         <PageDefault>
-            <h1>Cadastro de Categoria: {valores.nome} </h1>
+            <h1>Cadastro de Categoria: {valores.titulo} </h1>
             <form onSubmit={function handerSubmit(infos){
                //previne comportamento padrao do form 
                infos.preventDefault();
@@ -64,14 +50,14 @@ function CadastroCategoria(){
                    valores
                ]);
 
-               setValores(valoresIniciais)
+               clearForm();
 
             }}>
                 <FormField
                     label= "Nome da categoria"
                     type="text"
-                    value={valores.nome}
-                    name="nome"
+                    value={valores.titulo}
+                    name="titulo"
                     onChange={handleChange}
                 />
                 
@@ -103,7 +89,7 @@ function CadastroCategoria(){
                 {categorias.map((categoria, indice) => {
                     return (
                         <li key={`${categoria}${indice}`}>
-                            {categoria.nome}
+                            {categoria.titulo}
                         </li>
                     )
                 })}
