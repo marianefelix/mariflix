@@ -11,6 +11,7 @@ function CadastroVideo(){
     const history = useHistory();
     const [categorias, setCategorias] = useState([]);
     const categoryTitles = categorias.map(({ titulo }) => titulo);
+    var formIsValid = true;
     const form = useForm({
         valoresIniciais: {
             titulo: '', 
@@ -18,13 +19,31 @@ function CadastroVideo(){
             categoria: '',
         },
 
-        validate: function validate(valores){
+        validate: function validate(){
             const errors = {};
 
-            if(categoryTitles.indexOf(form.valores.categoria) === -1){
-                errors.categoria = 'Essa categoria não existe!';
+            if(form.valores.titulo === ''){
+                errors.titulo = 'Esse campo é obrigatório.';
+                formIsValid = false;
             }
-    
+
+            if(form.valores.url === ''){
+                errors.url = 'Esse campo é obrigatório.';
+                formIsValid = false;
+                //validar url depois com regex
+            }
+
+            if(form.valores.categoria === ''){
+                errors.categoria = 'Esse campo é obrigatório.';
+                formIsValid = false;
+            }
+            else{
+                if(categoryTitles.indexOf(form.valores.categoria) === -1){
+                    errors.categoria = 'Essa categoria não existe!';
+                    formIsValid = false;
+                }
+            }
+            
             return errors;
         }
         
@@ -38,12 +57,12 @@ function CadastroVideo(){
           });
     }, []);
 
-    function formIsValid(){
+    /*function formIsValid(){
         if(categoryTitles.indexOf(form.valores.categoria) !== -1){
             return true;
         }
         return false;
-    }
+    }*/
 
     return(
         <PageDefault>
@@ -54,7 +73,7 @@ function CadastroVideo(){
                 
                 form.validateValues();
 
-                if(formIsValid()){
+                if(formIsValid){
                     const categoriaEscolhida = categorias.find((categoria) => {
                         return categoria.titulo === form.valores.categoria;
                     });
@@ -71,32 +90,35 @@ function CadastroVideo(){
                 
             }}>
                 <FormField
-                    label= "Título do vídeo"
+                    label= "Título do vídeo *"
                     type="text"
                     value={form.valores.titulo}
                     name="titulo"
                     onChange={form.handleChange}
+                    error={form.errors.titulo && (form.errors.titulo) }
                 />
 
                 <FormField
-                    label= "Url"
+                    label= "Url *"
                     type="text"
                     value={form.valores.url}
                     name="url"
                     onChange={form.handleChange}
+                    error={form.errors.url && (form.errors.url) }
                 />
 
                 <FormField
-                    label= "Categoria"
+                    label= "Categoria *"
                     type="text"
                     value={form.valores.categoria}
                     name="categoria"
                     onChange={form.handleChange}
                     sugestoes={categoryTitles}
+                    error = {form.errors.categoria && ( form.errors.categoria ) }
 
                 />
 
-                {form.errors.categoria && <span>{form.errors.categoria}</span>}        
+                        
 
 
                 <Button type="submit">Cadastrar</Button>

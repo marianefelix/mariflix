@@ -4,6 +4,8 @@ import styled, { css } from 'styled-components';
 
 const FormFieldWrapper = styled.div`
   position: relative;
+  margin-bottom: 45px;
+
   textarea {
     min-height: 150px;
   }
@@ -12,7 +14,8 @@ const FormFieldWrapper = styled.div`
   }
 `;
 
-const Label = styled.label``;
+const Label = styled.label`
+`;
 
 Label.Text = styled.span`
   color: #E5E5E5;
@@ -46,7 +49,6 @@ const Input = styled.input`
   border-bottom: 4px solid #53585D;
   
   padding: 16px 16px;
-  margin-bottom: 45px;
   
   resize: none;
   border-radius: 4px;
@@ -71,8 +73,14 @@ const Input = styled.input`
   }
 `;
 
+const Span = styled.span`
+  color: red;
+  font-size: 15px;
+
+`;
+
 function FormField({
-  label, type, value, name, onChange, sugestoes
+  label, type, value, name, onChange, sugestoes, error
 }) {
   const fieldId = `id_${name}`; 
   const isTextArea = type === 'textarea';
@@ -99,6 +107,8 @@ function FormField({
           {label}
         </Label.Text>
 
+        <Span>{error}</Span>
+
         {
           hasSuggestions && (
             <datalist id={`suggestionFor_${fieldId}`}>
@@ -123,6 +133,7 @@ FormField.defaultProps = {
   value: '',
   onChange: () => {},
   sugestoes: [],
+  error: '',
 };
 
 FormField.propTypes = {
@@ -132,6 +143,7 @@ FormField.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func,
   sugestoes: PropTypes.arrayOf(PropTypes.string),
+  error: PropTypes.string,
 };
 
 export default FormField;
