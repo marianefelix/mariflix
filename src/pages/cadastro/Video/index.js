@@ -11,10 +11,23 @@ function CadastroVideo(){
     const history = useHistory();
     const [categorias, setCategorias] = useState([]);
     const categoryTitles = categorias.map(({ titulo }) => titulo);
-    const { handleChange, valores } = useForm({
-        titulo: '', 
-        url: '', 
-        categoria: ''
+    const form = useForm({
+        valoresIniciais: {
+            titulo: '', 
+            url: '', 
+            categoria: '',
+        },
+
+        validate: function validate(valores){
+            const errors = {};
+
+            if(categoryTitles.indexOf(form.valores.categoria) === -1){
+                errors.categoria = 'Essa categoria não existe!';
+            }
+    
+            return errors;
+        }
+        
     });
 
     useEffect(() => {
@@ -25,8 +38,12 @@ function CadastroVideo(){
           });
     }, []);
 
-    console.log(categorias);
-
+    function formIsValid(){
+        if(categoryTitles.indexOf(form.valores.categoria) !== -1){
+            return true;
+        }
+        return false;
+    }
 
     return(
         <PageDefault>
@@ -34,45 +51,54 @@ function CadastroVideo(){
 
             <form onSubmit={event => {
                 event.preventDefault();
-                const categoriaEscolhida = categorias.find((categoria) => {
-                    return categoria.titulo === valores.categoria;
-                });
+                
+                form.validateValues();
 
-                videosRepository.create({
-                    titulo: valores.titulo,
-                    url: valores.url,
-                    categoriaId: categoriaEscolhida.id,
-                })
-                    .then(() => {
-                        console.log('Deu bom!');
-                        history.push('/');
+                if(formIsValid()){
+                    const categoriaEscolhida = categorias.find((categoria) => {
+                        return categoria.titulo === form.valores.categoria;
                     });
+
+                    videosRepository.create({
+                        titulo: form.valores.titulo,
+                        url: form.valores.url,
+                        categoriaId: categoriaEscolhida.id,
+                        })
+                        .then(() => {
+                            history.push('/');
+                    });
+                }
+                
             }}>
                 <FormField
                     label= "Título do vídeo"
                     type="text"
-                    value={valores.titulo}
+                    value={form.valores.titulo}
                     name="titulo"
-                    onChange={handleChange}
+                    onChange={form.handleChange}
                 />
 
                 <FormField
                     label= "Url"
                     type="text"
-                    value={valores.url}
+                    value={form.valores.url}
                     name="url"
-                    onChange={handleChange}
+                    onChange={form.handleChange}
                 />
 
                 <FormField
                     label= "Categoria"
                     type="text"
-                    value={valores.categoria}
+                    value={form.valores.categoria}
                     name="categoria"
-                    onChange={handleChange}
+                    onChange={form.handleChange}
                     sugestoes={categoryTitles}
-                /> 
-                
+
+                />
+
+                {form.errors.categoria && <span>{form.errors.categoria}</span>}        
+
+
                 <Button type="submit">Cadastrar</Button>
 
             </form>

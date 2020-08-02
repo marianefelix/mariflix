@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-function useForm(valoresIniciais){
+function useForm({ valoresIniciais, validate} ){
     const [valores, setValores] = useState(valoresIniciais);
+    const [errors, setErrors] = useState([]);
     
     function setValor(chave, valor){
         setValores({
@@ -21,10 +22,18 @@ function useForm(valoresIniciais){
         setValores(valoresIniciais);
     }
 
+    function validateValues() {
+        setErrors(validate());
+    }
+
     return{
         valores, 
         handleChange,
-        clearForm
+        clearForm,
+        validateValues,
+        errors,
+        setErrors,
+
     };
 
 }
