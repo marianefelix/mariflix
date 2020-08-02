@@ -18,7 +18,7 @@ function useForm({ valoresIniciais, validate} ){
         );
     }
 
-    function clearForm() {
+    function clear() {
         setValores(valoresIniciais);
     }
 
@@ -29,7 +29,7 @@ function useForm({ valoresIniciais, validate} ){
     return{
         valores, 
         handleChange,
-        clearForm,
+        clear,
         validateValues,
         errors,
         setErrors,

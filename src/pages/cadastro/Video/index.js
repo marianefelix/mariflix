@@ -12,6 +12,7 @@ function CadastroVideo(){
     const [categorias, setCategorias] = useState([]);
     const categoryTitles = categorias.map(({ titulo }) => titulo);
     var formIsValid = true;
+    
     const form = useForm({
         valoresIniciais: {
             titulo: '', 
@@ -43,7 +44,7 @@ function CadastroVideo(){
                     formIsValid = false;
                 }
             }
-            
+
             return errors;
         }
         

@@ -2,8 +2,12 @@ import config from '../config';
 
 const URL_VIDEOS = `${config.URL_BACKEND}/videos`;
 
+const url_create_videos = `${URL_VIDEOS}?_embed=videos`;
+
+//ajeitar depois 
+
 function create(object){
-    return fetch(`${URL_VIDEOS}?_embed=videos`, {
+    return fetch(url_create_videos, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
@@ -22,4 +26,5 @@ function create(object){
 
 export default {
     create,
+    url_create_videos
 };

@@ -4,79 +4,105 @@ import { Link } from 'react-router-dom';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
+import categoriasRepository from '../../../repositories/categorias';
 
 function CadastroCategoria(){
-    const valoresIniciais = {
-        titulo: '',
-        descricao: '',
-        cor: ''
+    const [categorias, setCategorias] = useState([]);
+    const categoryTitles = categorias.map(({ titulo }) => titulo);
+    var formIsValid = true;
+
+    const form = useForm({
+        valoresIniciais: {
+            titulo: '',
+            descricao: '',
+            cor: '',
+        },
+
+        validate: function validate(){
+            const errors = {};
+
+            if(form.valores.titulo === ''){
+                errors.titulo = 'Esse campo é obrigatório.';
+                formIsValid = false;
+            }
+            else{
+                if(categoryTitles.indexOf(form.valores.titutlo)){
+                    errors.titulo = 'Essa categoria já existe!';
+                    formIsValid = false;
+                }
+            }
+
+            return errors;
+        }
+        
+    });
+
+    function obterCategorias(){
+        //obtem todas as categorias registradas no db 
+        categoriasRepository
+          .getAll()
+            .then((categoriasFromServer) => {
+            setCategorias(categoriasFromServer);
+          });
     }
 
-    const { handleChange, valores, clearForm } = useForm(valoresIniciais);
-
-    const [categorias, setCategorias] = useState([]);
-
-    useEffect( () => {
-        
-        const URL = window.location.hostname.includes('localhost')
-            ? 'http://localhost:8080/categorias'
-            : 'https://mariflix.herokuapp.com/categorias';
-
-        fetch(URL)
-            .then(async (respostaDoServer) => {
-            if (respostaDoServer.ok) {
-                const resposta = await respostaDoServer.json();
-                setCategorias([
-                    ...resposta,
-                ]);
-                return;
-            }
-            throw new Error('Não foi possível pegar os dados');
-            });
-        
-
+    useEffect(() => {
+        obterCategorias();
     }, []);
     
     return(
         <PageDefault>
-            <h1>Cadastro de Categoria: {valores.titulo} </h1>
-            <form onSubmit={function handerSubmit(infos){
-               //previne comportamento padrao do form 
-               infos.preventDefault();
+            <h1>Cadastro de Categoria: {form.valores.titulo} </h1>
+            <form onSubmit={event => {
+                //previne comportamento padrão do form
+                event.preventDefault();
 
-               //adiciona nova categoria a lista 
-               setCategorias([
-                   ...categorias,
-                   valores
-               ]);
+                //valida valores do form
+                form.validateValues();
+                console.log(form.errors.titulo);
 
-               clearForm();
+                if(formIsValid){
+                    //cadastra categoria
+                    categoriasRepository.create({
+                        titulo: form.valores.titulo,
+                        descricao: form.valores.descricao,
+                        cor: form.valores.cor,
+                        })
+                        .then(() => {    
+                            obterCategorias();                       
+                    });
+
+                    //lima campos do form
+                    //form.clear();
+                }
+                
 
             }}>
                 <FormField
-                    label= "Nome da categoria"
+                    label= "Nome da categoria *"
                     type="text"
-                    value={valores.titulo}
+                    value={form.valores.titulo}
                     name="titulo"
-                    onChange={handleChange}
+                    onChange={form.handleChange}
+                    error= {form.errors.titulo && (form.errors.titulo)}
                 />
                 
                 <FormField   
                     label="Descrição"
                     type="textarea"
-                    value={valores.descricao}
+                    value={form.valores.descricao}
                     name="descricao"
-                    onChange={handleChange}
+                    onChange={form.handleChange}
                 />       
                    
                 <FormField 
                     label= "Cor"
                     type="color"
-                    value={valores.cor}
+                    value={form.valores.cor}
                     name="cor"
-                    onChange={handleChange}
+                    onChange={form.handleChange}
                 />
-                <Button>Cadastrar</Button>
+                <Button type="submit">Cadastrar</Button>
             </form>
             
             {categorias.length === 0 && (
