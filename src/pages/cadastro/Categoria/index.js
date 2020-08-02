@@ -26,7 +26,7 @@ function CadastroCategoria(){
                 formIsValid = false;
             }
             else{
-                if(categoryTitles.indexOf(form.valores.titutlo)){
+                if(categoryTitles.indexOf(form.valores.titulo) !== -1){
                     errors.titulo = 'Essa categoria já existe!';
                     formIsValid = false;
                 }
@@ -73,7 +73,7 @@ function CadastroCategoria(){
                     });
 
                     //lima campos do form
-                    //form.clear();
+                    form.clear();
                 }
                 
 
