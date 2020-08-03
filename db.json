@@ -2,33 +2,45 @@
   "categorias": [
     {
       "id": 1,
-      "titulo": "Front End",
-      "cor": "#6BD1FF",
+      "titulo": "Mulheres e TI",
+      "link": "",
+      "cor": "var(--primary)",
       "link_extra": {
-        "text": "Formação de Front End na Alura",
-        "url": "https://www.alura.com.br/cursos-online-front-end"
+        "text": "Para te inspirar mais, mulher",
+        "url": "https://www.alura.com.br/artigos/momentos-historicos-das-mulheres-na-tecnologia"
       }
-    },
-    {
-      "titulo": "a",
-      "descricao": "a",
-      "cor": "",
-      "id": 2
     }
-    
   ],
   "videos": [
     {
       "id": 1,
       "categoriaId": 1,
-      "titulo": "SEO com React",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE"
+      "titulo": "Mulheres na Computação | Camila Achutti | TEDxUSP",
+      "url": "https://www.youtube.com/watch?v=Qq9h2vVBZmQ"
     },
     {
-      "titulo": "Video padrão",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE",
+      "id": 2,
       "categoriaId": 1,
-      "id": 2
+      "titulo": "WoMakersCode: Mulheres na Tecnologia",
+      "url": "https://www.youtube.com/watch?v=Ah05cgRap0c"
+    },
+    {
+      "id": 1,
+      "categoriaId": 1,
+      "titulo": "Mulheres na tecnologia, representatividade e 10k inscritos 👩🏻‍💻",
+      "url": "https://www.youtube.com/watch?v=nzL2z-U9tu8"
+    },
+    {
+      "id": 1,
+      "categoriaId": 1,
+      "titulo": "QUANDO PENSAMOS EM PROGRAMAÇÃO",
+      "url": "https://www.youtube.com/watch?v=AdFU6l4fL_E&list=WL&index=2&t=0s"
+    },
+    {
+      "id": 1,
+      "categoriaId": 1,
+      "titulo": "Mulher + Tecnologia: Combinação Perfeita (Minha História - Vanessa Weber) // Vlog #115",
+      "url": "https://www.youtube.com/watch?v=yJTsA4hC_fw"
     }
   ]
 }
