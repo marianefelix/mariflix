@@ -119,15 +119,11 @@ function CadastroVideo(){
 
                 />
 
-                        
-
-
                 <Button type="submit">Cadastrar</Button>
 
-            </form>
-            <br />
-            
-            <Link to="/cadastro/categoria">Cadastrar categoria</Link>
+                <Link to="/cadastro/categoria" style={{textDecoration: 'none', color: '#3CCBCE', float: 'right', marginTop: '16px', marginRight: '5px'}}>Cadastrar categoria</Link>
+
+            </form>            
         </PageDefault>
     );
 }

@@ -147,14 +147,21 @@ function CadastroCategoria(){
                     onChange={form.handleChange}
                 />
                 <Button type="submit">Cadastrar</Button>
-            </form>
-            <Link to="/" style={{textDecoration: 'none', color: '#3CCBCE' }}>Ir pra home</Link>
+                
+                <Link to="/" style={{textDecoration: 'none', color: '#3CCBCE', float: 'right', marginTop: '16px', marginRight: '5px'}}>Ir pra home</Link>
             
-            {categorias.length === 0 && (
-            <div>
-                Loading...
-            </div>
-            )}
+            </form>
+
+            
+            
+            {/*
+                {categorias.length === 0 && (
+                <div>
+                    Loading...
+                </div>
+                )}
+            */}
+            
 
             <CategoriesTable>
                 <TitleTable>
