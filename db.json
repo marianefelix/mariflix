@@ -14,127 +14,8 @@
       "descricao": "a",
       "cor": "",
       "id": 2
-    },
-    {
-      "titulo": "aa",
-      "descricao": "aa",
-      "cor": "",
-      "id": 3
-    },
-    {
-      "titulo": "aaaa",
-      "descricao": "aaa",
-      "cor": "",
-      "id": 4
-    },
-    {
-      "titulo": "aia",
-      "descricao": "a",
-      "cor": "",
-      "id": 5
-    },
-    {
-      "titulo": "naosei",
-      "descricao": "aaa",
-      "cor": "",
-      "id": 6
-    },
-    {
-      "titulo": "",
-      "descricao": "",
-      "cor": "",
-      "id": 7
-    },
-    {
-      "titulo": "",
-      "descricao": "",
-      "cor": "",
-      "id": 8
-    },
-    {
-      "titulo": "a",
-      "descricao": "",
-      "cor": "",
-      "id": 9
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 10
-    },
-    {
-      "titulo": "a",
-      "descricao": "",
-      "cor": "",
-      "id": 11
-    },
-    {
-      "titulo": "a",
-      "descricao": "",
-      "cor": "",
-      "id": 12
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 13
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 14
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 15
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 16
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 17
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 18
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 19
-    },
-    {
-      "titulo": "k",
-      "descricao": "",
-      "cor": "",
-      "id": 20
-    },
-    {
-      "titulo": "aaaaaaaaaaaaaaaaaaaaaaa",
-      "descricao": "",
-      "cor": "",
-      "id": 21
-    },
-    {
-      "titulo": "seila",
-      "descricao": "",
-      "cor": "",
-      "id": 22
     }
+    
   ],
   "videos": [
     {
@@ -148,30 +29,6 @@
       "url": "https://www.youtube.com/watch?v=c8mVlakBESE",
       "categoriaId": 1,
       "id": 2
-    },
-    {
-      "titulo": "Video top",
-      "url": "https://www.youtube.com/watch?v=c8mVlakBESE",
-      "categoriaId": 1,
-      "id": 3
-    },
-    {
-      "titulo": "",
-      "url": "",
-      "categoriaId": 1,
-      "id": 4
-    },
-    {
-      "titulo": "",
-      "url": "",
-      "categoriaId": 1,
-      "id": 5
-    },
-    {
-      "titulo": "Titulo",
-      "url": "jfjjjf",
-      "categoriaId": 1,
-      "id": 6
     }
   ]
 }

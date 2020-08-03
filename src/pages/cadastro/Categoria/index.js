@@ -1,10 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm';
 import categoriasRepository from '../../../repositories/categorias';
+
+const CategoriesTable = styled.div`
+    max-width: 100%;
+    margin-top: 45px;
+    /* --color-primary-medium */
+    border: 3px solid var(--blackLighter);
+    display: flex;
+    flex-direction: column;
+    
+`;
+const TitleTable = styled.div`
+    height: 55px;
+    display: flex;
+    align-items: center;
+    background-color: var(--blackLighter);
+    
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--black);
+    
+    
+    p:first-child{
+        width: 50%;
+        margin-left: 100px;
+    }
+    p:last-child{
+        width: 50%;
+    }
+`;
+
+const CategoriesInfos = styled.div`
+    display: flex;   
+    align-items: center;
+    border-top: 1px solid var(--blackLighter);
+    p{
+        width: calc(100% - 50%);
+    }
+    p:first-child{
+        margin-left: 100px;
+    }
+    
+`;
+
 
 function CadastroCategoria(){
     const [categorias, setCategorias] = useState([]);
@@ -104,6 +148,7 @@ function CadastroCategoria(){
                 />
                 <Button type="submit">Cadastrar</Button>
             </form>
+            <Link to="/" style={{textDecoration: 'none', color: '#3CCBCE' }}>Ir pra home</Link>
             
             {categorias.length === 0 && (
             <div>
@@ -111,17 +156,38 @@ function CadastroCategoria(){
             </div>
             )}
 
-            <ul>
+            <CategoriesTable>
+                <TitleTable>
+                    <p>Nome</p>
+                    <p>Descrição</p>
+                </TitleTable>
+                
+
                 {categorias.map((categoria, indice) => {
                     return (
-                        <li key={`${categoria}${indice}`}>
-                            {categoria.titulo}
-                        </li>
+                        <CategoriesInfos key={`${categoria.id}`}>
+                            <p>
+                                {categoria.titulo}
+                            </p>
+                            
+                            {!categoria.descricao  && (
+                            <p style={{fontStyle: 'italic'}}>
+                                Sem descrição
+                            </p>
+                            )}
+
+                            {categoria.descricao && (
+                                 <p>
+                                    {categoria.descricao}
+                                </p>
+                            )}
+                           
+                        </CategoriesInfos>
                     )
                 })}
-            </ul>
+            </CategoriesTable>
 
-            <Link to="/" style={{textDecoration: 'none', color: '#3CCBCE' }}>Ir pra home</Link>
+            
         </PageDefault>
     );
 }
