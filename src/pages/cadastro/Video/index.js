@@ -114,7 +114,7 @@ function CadastroVideo(){
                     value={form.valores.categoria}
                     name="categoria"
                     onChange={form.handleChange}
-                    sugestoes={categoryTitles}
+                    suggestions={categoryTitles}
                     error = {form.errors.categoria && ( form.errors.categoria ) }
 
                 />
