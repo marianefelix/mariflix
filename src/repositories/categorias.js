@@ -1,14 +1,15 @@
 import config from '../config';
 
-const URL_CATEGORIES = `${config.URL_BACKEND}/categorias`;
-const url_create_categories = `${URL_CATEGORIES}?_embed=categorias`;
+const categoriesURL = `${config.baseURL}/categorias`;
+const createCategoriesURL = `${categoriesURL}?_embed=categorias`;
 
 function getAll() {
-    return fetch(`${URL_CATEGORIES}`)
-      .then(async (respostaDoServidor) => {
-        if (respostaDoServidor.ok) {
-          const resposta = await respostaDoServidor.json();
-          return resposta;
+    return fetch(`${categoriesURL}`)
+      .then(async (responseServer) => {
+        if (responseServer.ok) {
+          const response = await responseServer.json();
+          
+          return response;
         }
   
         throw new Error('Não foi possível pegar os dados :(');
@@ -16,31 +17,30 @@ function getAll() {
 }
 
 function getAllWithVideos(){
-
-    return fetch(`${URL_CATEGORIES}?_embed=videos`)
-        .then(async (respostaDoServer) => {
-            if (respostaDoServer.ok) {
-                const resposta = await respostaDoServer.json();
+    return fetch(`${categoriesURL}?_embed=videos`)
+        .then(async (responseServer) => {
+            if (responseServer.ok) {
+                const response = await responseServer.json();
                 
-                return resposta;
+                return response;
             }
             throw new Error('Não foi possível pegar os dados');
         });
 }
 
 function create(object){
-    return fetch(url_create_categories, {
+    return fetch(createCategoriesURL, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
         },
         body: JSON.stringify(object),
     })
-        .then(async (respostaDoServer) => {
-            if (respostaDoServer.ok) {
-                const resposta = await respostaDoServer.json();
+        .then(async (responseServer) => {
+            if (responseServer.ok) {
+                const response = await responseServer.json();
                 
-                return resposta;
+                return response;
             }
             throw new Error('Não foi possível pegar os dados');
         });

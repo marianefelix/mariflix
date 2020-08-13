@@ -1,24 +1,21 @@
 import config from '../config';
 
-const URL_VIDEOS = `${config.URL_BACKEND}/videos`;
-
-const url_create_videos = `${URL_VIDEOS}?_embed=videos`;
-
-//ajeitar depois 
+const videosURL = `${config.baseURL}/videos`;
+const createVideosURL = `${videosURL}?_embed=videos`;
 
 function create(object){
-    return fetch(url_create_videos, {
+    return fetch(createVideosURL, {
         method: 'POST',
         headers: {
             'Content-type': 'application/json',
         },
         body: JSON.stringify(object),
     })
-        .then(async (respostaDoServer) => {
-            if (respostaDoServer.ok) {
-                const resposta = await respostaDoServer.json();
+        .then(async (responseServer) => {
+            if (responseServer.ok) {
+                const response = await responseServer.json();
                 
-                return resposta;
+                return response;
             }
             throw new Error('Não foi possível pegar os dados');
         });
@@ -26,5 +23,5 @@ function create(object){
 
 export default {
     create,
-    url_create_videos
+    createVideosURL
 };

@@ -1,25 +1,25 @@
 import { useState } from 'react';
 
-function useForm({ valoresIniciais, validate} ){
-    const [valores, setValores] = useState(valoresIniciais);
+function useForm({ initialsValues, validate} ){
+    const [values, setValues] = useState(initialsValues);
     const [errors, setErrors] = useState([]);
     
-    function setValor(chave, valor){
-        setValores({
-            ...valores,
-            [chave]: valor
+    function setValue(chave, value){
+        setValues({
+            ...values,
+            [chave]: value
         })
     }
 
     function handleChange(infos){
-        setValor(
+        setValue(
             infos.target.getAttribute(['name']), 
             infos.target.value
         );
     }
 
     function clear() {
-        setValores(valoresIniciais);
+        setValues(initialsValues);
     }
 
     function validateValues() {
@@ -27,13 +27,12 @@ function useForm({ valoresIniciais, validate} ){
     }
 
     return{
-        valores, 
+        values, 
         handleChange,
         clear,
         validateValues,
         errors,
         setErrors,
-
     };
 
 }

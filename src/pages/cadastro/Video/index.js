@@ -1,20 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import PageDefault from '../../../components/PageDefault';
 import { Link, useHistory } from 'react-router-dom';
+
+import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
-import useForm from '../../../hooks/useForm';
 import Button from '../../../components/Button';
+
+import useForm from '../../../hooks/useForm';
+
 import videosRepository from '../../../repositories/videos';
 import categoriasRepository from '../../../repositories/categorias';
 
 function CadastroVideo(){
     const history = useHistory();
-    const [categorias, setCategorias] = useState([]);
-    const categoryTitles = categorias.map(({ titulo }) => titulo);
+    const [categories, setCategories] = useState([]);
+    const categoryTitles = categories.map(({ titulo }) => titulo);
+
     var formIsValid = true;
     
     const form = useForm({
-        valoresIniciais: {
+        initialsValues: {
             titulo: '', 
             url: '', 
             categoria: '',
@@ -23,23 +27,23 @@ function CadastroVideo(){
         validate: function validate(){
             const errors = {};
 
-            if(form.valores.titulo === ''){
+            if(form.values.titulo === ''){
                 errors.titulo = 'Esse campo é obrigatório.';
                 formIsValid = false;
             }
 
-            if(form.valores.url === ''){
+            if(form.values.url === ''){
                 errors.url = 'Esse campo é obrigatório.';
                 formIsValid = false;
                 //validar url depois com regex
             }
 
-            if(form.valores.categoria === ''){
+            if(form.values.categoria === ''){
                 errors.categoria = 'Esse campo é obrigatório.';
                 formIsValid = false;
             }
             else{
-                if(categoryTitles.indexOf(form.valores.categoria) === -1){
+                if(categoryTitles.indexOf(form.values.categoria) === -1){
                     errors.categoria = 'Essa categoria não existe!';
                     formIsValid = false;
                 }
@@ -53,17 +57,11 @@ function CadastroVideo(){
     useEffect(() => {
         categoriasRepository
           .getAll()
-          .then((categoriasFromServer) => {
-            setCategorias(categoriasFromServer);
+          .then((categoriesFromServer) => {
+            setCategories(categoriesFromServer);
           });
     }, []);
 
-    /*function formIsValid(){
-        if(categoryTitles.indexOf(form.valores.categoria) !== -1){
-            return true;
-        }
-        return false;
-    }*/
 
     return(
         <PageDefault>
@@ -75,14 +73,14 @@ function CadastroVideo(){
                 form.validateValues();
 
                 if(formIsValid){
-                    const categoriaEscolhida = categorias.find((categoria) => {
-                        return categoria.titulo === form.valores.categoria;
+                    const chosenCategory = categories.find((categoria) => {
+                        return categoria.titulo === form.values.categoria;
                     });
 
                     videosRepository.create({
-                        titulo: form.valores.titulo,
-                        url: form.valores.url,
-                        categoriaId: categoriaEscolhida.id,
+                        titulo: form.values.titulo,
+                        url: form.values.url,
+                        categoriaId: chosenCategory.id,
                         })
                         .then(() => {
                             history.push('/');
@@ -93,7 +91,7 @@ function CadastroVideo(){
                 <FormField
                     label= "Título do vídeo *"
                     type="text"
-                    value={form.valores.titulo}
+                    value={form.values.titulo}
                     name="titulo"
                     onChange={form.handleChange}
                     error={form.errors.titulo && (form.errors.titulo) }
@@ -102,7 +100,7 @@ function CadastroVideo(){
                 <FormField
                     label= "Url *"
                     type="text"
-                    value={form.valores.url}
+                    value={form.values.url}
                     name="url"
                     onChange={form.handleChange}
                     error={form.errors.url && (form.errors.url) }
@@ -111,7 +109,7 @@ function CadastroVideo(){
                 <FormField
                     label= "Categoria *"
                     type="text"
-                    value={form.valores.categoria}
+                    value={form.values.categoria}
                     name="categoria"
                     onChange={form.handleChange}
                     suggestions={categoryTitles}
@@ -121,7 +119,14 @@ function CadastroVideo(){
 
                 <Button type="submit">Cadastrar</Button>
 
-                <Link to="/cadastro/categoria" style={{textDecoration: 'none', color: '#3CCBCE', float: 'right', marginTop: '16px', marginRight: '5px'}}>Cadastrar categoria</Link>
+                <Link to="/cadastro/categoria" 
+                style={{
+                    textDecoration: 'none', 
+                    color: '#3CCBCE', 
+                    float: 'right', 
+                    marginTop: '16px', 
+                    marginRight: '5px'
+                }}>Ir para categoria</Link>
 
             </form>            
         </PageDefault>

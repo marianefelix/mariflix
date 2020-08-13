@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
+
 import BannerMain from '../../components/BannerMain';
 import Carousel from '../../components/Carousel';
-import categoriasRepository from '../../repositories/categorias';
 import PageDefault from '../../components/PageDefault';
 
+import categoriasRepository from '../../repositories/categorias';
+
 function Home() {
-  const [dadosIniciais, setDadosIniciais] = useState([]);
+  const [initialsData, setInitialsData] = useState([]);
 
   useEffect( () => {
         categoriasRepository.getAllWithVideos()
-        .then((categoriasComVideos) => {
+        .then((categoriesWithVideos) => {
           //console.log(categoriasComVideos);
-          setDadosIniciais(categoriasComVideos);
+          setInitialsData(categoriesWithVideos);
         })
         .catch(err => {
           console.log(err.message);
@@ -21,19 +23,19 @@ function Home() {
 
   return (
       <PageDefault paddingAll={0}>
-        {dadosIniciais.map((categoria, indice) => {
+        {initialsData.map((categoria, indice) => {
           if(indice === 0){
             return(
               <div key={categoria.id}>
                 <BannerMain
-                  videoTitle={dadosIniciais[0].videos[0].titulo}
-                  url={dadosIniciais[0].videos[0].url}
+                  videoTitle={initialsData[0].videos[0].titulo}
+                  url={initialsData[0].videos[0].url}
                   videoDescription={"Camila Achutti, cientista da computação e empreendedora, discorre sobre o cenário brasileiro de mulheres na tecnologia."}
                 />
 
                 <Carousel
                   ignoreFirstVideo
-                  category={dadosIniciais[0]}
+                  category={initialsData[0]}
                 />
               </div>
             );
@@ -48,9 +50,7 @@ function Home() {
 
         })}
         
-      </PageDefault>
-
-      
+      </PageDefault> 
       
   );
 }

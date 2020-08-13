@@ -1,62 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+
+import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+
 import useForm from '../../../hooks/useForm';
+
 import categoriasRepository from '../../../repositories/categorias';
 
-const CategoriesTable = styled.div`
-    max-width: 100%;
-    margin-top: 45px;
-    /* --color-primary-medium */
-    border: 3px solid var(--blackLighter);
-    display: flex;
-    flex-direction: column;
-    
-`;
-const TitleTable = styled.div`
-    height: 55px;
-    display: flex;
-    align-items: center;
-    background-color: var(--blackLighter);
-    
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--black);
-    
-    
-    p:first-child{
-        width: 50%;
-        margin-left: 100px;
-    }
-    p:last-child{
-        width: 50%;
-    }
-`;
-
-const CategoriesInfos = styled.div`
-    display: flex;   
-    align-items: center;
-    border-top: 1px solid var(--blackLighter);
-    p{
-        width: calc(100% - 50%);
-    }
-    p:first-child{
-        margin-left: 100px;
-    }
-    
-`;
-
+import { TableCategories, TableTitle, CategoriesInfos } from './styles';
 
 function CadastroCategoria(){
-    const [categorias, setCategorias] = useState([]);
-    const categoryTitles = categorias.map(({ titulo }) => titulo);
+    const [categories, setCategories] = useState([]);
+    const categoryTitles = categories.map(({ titulo }) => titulo);
+    
     var formIsValid = true;
 
     const form = useForm({
-        valoresIniciais: {
+        initialsValues: {
             titulo: '',
             cor: '',
             link_extra: {
@@ -68,12 +30,12 @@ function CadastroCategoria(){
         validate: function validate(){
             const errors = {};
 
-            if(form.valores.titulo === ''){
+            if(form.values.titulo === ''){
                 errors.titulo = 'Esse campo é obrigatório.';
                 formIsValid = false;
             }
             else{
-                if(categoryTitles.indexOf(form.valores.titulo) !== -1){
+                if(categoryTitles.indexOf(form.values.titulo) !== -1){
                     errors.titulo = 'Essa categoria já existe!';
                     formIsValid = false;
                 }
@@ -84,42 +46,43 @@ function CadastroCategoria(){
         
     });
 
-    function obterCategorias(){
+    function getCategories(){
         //obtem todas as categorias registradas no db 
+
         categoriasRepository
           .getAll()
-            .then((categoriasFromServer) => {
-            setCategorias(categoriasFromServer);
+            .then((categoriesFromServer) => {
+            setCategories(categoriesFromServer);
           });
     }
 
     useEffect(() => {
-        obterCategorias();
+        getCategories();
     }, []);
     
     return(
         <PageDefault>
-            <h1>Cadastro de Categoria: {form.valores.titulo} </h1>
+            <h1>Cadastro de Categoria: {form.values.titulo} </h1>
             <form onSubmit={event => {
                 //previne comportamento padrão do form
                 event.preventDefault();
 
                 //valida valores do form
                 form.validateValues();
-                console.log(form.errors.titulo);
+                //console.log(form.errors.titulo);
 
                 if(formIsValid){
                     //cadastra categoria
                     categoriasRepository.create({
-                        titulo: form.valores.titulo,
-                        cor: form.valores.cor,
+                        titulo: form.values.titulo,
+                        cor: form.values.cor,
                         link_extra: {
-                            text: form.valores.descricao,
-                            url: form.valores.url,
+                            text: form.values.descricao,
+                            url: form.values.url,
                         }
                         })
                         .then(() => {    
-                            obterCategorias();                       
+                            getCategories();                       
                     });
 
                     //lima campos do form
@@ -131,7 +94,7 @@ function CadastroCategoria(){
                 <FormField
                     label= "Nome da categoria *"
                     type="text"
-                    value={form.valores.titulo}
+                    value={form.values.titulo}
                     name="titulo"
                     onChange={form.handleChange}
                     error= {form.errors.titulo && (form.errors.titulo)}
@@ -140,7 +103,7 @@ function CadastroCategoria(){
                 <FormField   
                     label="Descrição"
                     type="text"
-                    value={form.valores.descricao}
+                    value={form.values.descricao}
                     name="descricao"
                     onChange={form.handleChange}
                 />       
@@ -148,20 +111,30 @@ function CadastroCategoria(){
                 <FormField
                     label= "Link extra"
                     type="text"
-                    value={form.valores.url}
+                    value={form.values.url}
                     name="url"
                     onChange={form.handleChange}
                 />
+
                 <FormField 
                     label= "Cor"
                     type="color"
-                    value={form.valores.cor}
+                    value={form.values.cor}
                     name="cor"
                     onChange={form.handleChange}
                 />
+
                 <Button type="submit">Cadastrar</Button>
                 
-                <Link to="/" style={{textDecoration: 'none', color: '#3CCBCE', float: 'right', marginTop: '16px', marginRight: '5px'}}>Ir pra home</Link>
+                <Link to="/" 
+                style={{
+                    textDecoration: 'none', 
+                    color: '#3CCBCE', 
+                    float: 'right', 
+                    marginTop: '16px', 
+                    marginRight: '5px'
+                
+                }}>Ir pra home</Link>
             
             </form>
 
@@ -176,36 +149,36 @@ function CadastroCategoria(){
             */}
             
 
-            <CategoriesTable>
-                <TitleTable>
+            <TableCategories>
+                <TableTitle>
                     <p>Nome</p>
                     <p>Descrição</p>
-                </TitleTable>
+                </TableTitle>
                 
 
-                {categorias.map((categoria, indice) => {
+                {categories.map((category, indice) => {
                     return (
-                        <CategoriesInfos key={`${categoria.id}`}>
+                        <CategoriesInfos key={`${category.id}`}>
                             <p>
-                                {categoria.titulo}
+                                {category.titulo}
                             </p>
                             
-                            {!categoria.link_extra.text  && (
+                            {!category.link_extra.text  && (
                             <p style={{fontStyle: 'italic'}}>
                                 Sem descrição
                             </p>
                             )}
 
-                            {categoria.link_extra.text && (
+                            {category.link_extra.text && (
                                  <p>
-                                    {categoria.link_extra.text}
+                                    {category.link_extra.text}
                                 </p>
                             )}
                            
                         </CategoriesInfos>
                     )
                 })}
-            </CategoriesTable>
+            </TableCategories>
 
             
         </PageDefault>
