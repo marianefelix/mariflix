@@ -1,14 +1,6 @@
-.Logo{
-    max-width: 168px;
-}
+import styled from 'styled-components';
 
-@media (max-width: 800px) {
-    .Logo {
-        max-width: 105px;
-    }
-}
-
-.Menu {
+export const Nav = styled.nav`
     width: 100%;
     height: 94px;
     z-index: 100;
@@ -23,23 +15,17 @@
     padding-right: 5%;
     background: var(--black);
     border-bottom: 2px solid var(--primary);
-}
+    
+    .Logo{
+        max-width: 168px;
+    }
 
-body {
-    --bodyPaddingTop: 94px;
-    padding-top: var(--bodyPaddingTop);
-}
-
-@media (max-width: 800px) {
-    .Menu {
+    @media (max-width: 800px) {
         height: 40px;
         justify-content: center;
+
+        .Logo {
+            max-width: 105px;
+        }
     }
-
-    body {
-        --bodyPaddingTop: 40px;
-        padding-top: var(--bodyPaddingTop);
-    }
-
-}
-
+`;
