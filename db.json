@@ -3,12 +3,27 @@
     {
       "id": 1,
       "titulo": "Mulheres e TI",
-      "link": "",
       "cor": "var(--primary)",
       "link_extra": {
         "text": "Para te inspirar mais, mulher",
         "url": "https://www.alura.com.br/artigos/momentos-historicos-das-mulheres-na-tecnologia"
       }
+    },
+    {
+      "titulo": "Séries",
+      "cor": "#00b8ab",
+      "link_extra": {
+        "text": "Minhas séries favoritas com mulheres protagonistas"
+      },
+      "id": 2
+    },
+    {
+      "titulo": "Artistas",
+      "cor": "#00d9ff",
+      "link_extra": {
+        "text": "Artistas que curto e admiro"
+      },
+      "id": 3
     }
   ],
   "videos": [
@@ -41,6 +56,48 @@
       "categoriaId": 1,
       "titulo": "Mulher + Tecnologia: Combinação Perfeita (Minha História - Vanessa Weber) // Vlog #115",
       "url": "https://www.youtube.com/watch?v=yJTsA4hC_fw"
+    },
+    {
+      "titulo": "OUTLANDER - Season 1 Trailer",
+      "url": "https://www.youtube.com/watch?v=PFFKjptRr7Y",
+      "categoriaId": 2,
+      "id": 3
+    },
+    {
+      "titulo": "Another Life | Official Trailer | Netflix",
+      "url": "https://www.youtube.com/watch?v=qAtBbgtMnZ8",
+      "categoriaId": 2,
+      "id": 4
+    },
+    {
+      "titulo": "AURORA - I Went Too Far",
+      "url": "https://www.youtube.com/watch?v=eT6dLJd3rYk",
+      "categoriaId": 3,
+      "id": 5
+    },
+    {
+      "titulo": "Tove Lo - hey you got drugs?",
+      "url": "https://www.youtube.com/watch?v=rbPBpui8HAQ",
+      "categoriaId": 3,
+      "id": 6
+    },
+    {
+      "titulo": "LSD - It's Time (Official Audio) ft. Sia, Diplo, Labrinth",
+      "url": "https://www.youtube.com/watch?v=AkdBZEGbAsE",
+      "categoriaId": 3,
+      "id": 7
+    },
+    {
+      "titulo": "Sam Smith - Pray",
+      "url": "https://www.youtube.com/watch?v=hhREiAarjVY",
+      "categoriaId": 3,
+      "id": 8
+    },
+    {
+      "titulo": "BAEKHYUN 백현 'Love Again'",
+      "url": "https://www.youtube.com/watch?v=gB6NSO4MQ6U",
+      "categoriaId": 3,
+      "id": 9
     }
   ]
 }

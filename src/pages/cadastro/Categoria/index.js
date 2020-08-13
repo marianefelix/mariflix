@@ -58,8 +58,11 @@ function CadastroCategoria(){
     const form = useForm({
         valoresIniciais: {
             titulo: '',
-            descricao: '',
             cor: '',
+            link_extra: {
+                text: '',
+                url: ''
+            },
         },
 
         validate: function validate(){
@@ -109,8 +112,11 @@ function CadastroCategoria(){
                     //cadastra categoria
                     categoriasRepository.create({
                         titulo: form.valores.titulo,
-                        descricao: form.valores.descricao,
                         cor: form.valores.cor,
+                        link_extra: {
+                            text: form.valores.descricao,
+                            url: form.valores.url,
+                        }
                         })
                         .then(() => {    
                             obterCategorias();                       
@@ -133,12 +139,19 @@ function CadastroCategoria(){
                 
                 <FormField   
                     label="Descrição"
-                    type="textarea"
+                    type="text"
                     value={form.valores.descricao}
                     name="descricao"
                     onChange={form.handleChange}
                 />       
                    
+                <FormField
+                    label= "Link extra"
+                    type="text"
+                    value={form.valores.url}
+                    name="url"
+                    onChange={form.handleChange}
+                />
                 <FormField 
                     label= "Cor"
                     type="color"
@@ -177,15 +190,15 @@ function CadastroCategoria(){
                                 {categoria.titulo}
                             </p>
                             
-                            {!categoria.descricao  && (
+                            {!categoria.link_extra.text  && (
                             <p style={{fontStyle: 'italic'}}>
                                 Sem descrição
                             </p>
                             )}
 
-                            {categoria.descricao && (
+                            {categoria.link_extra.text && (
                                  <p>
-                                    {categoria.descricao}
+                                    {categoria.link_extra.text}
                                 </p>
                             )}
                            

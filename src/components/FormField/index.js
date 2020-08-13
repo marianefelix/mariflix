@@ -6,9 +6,9 @@ const FormFieldWrapper = styled.div`
   position: relative;
   margin-bottom: 45px;
 
-  textarea {
+  /*textarea {
     min-height: 150px;
-  }
+  }*/
   input[type="color"] {
     padding-left: 56px;
   }
@@ -83,9 +83,10 @@ function FormField({
   label, type, value, name, onChange, sugestoes, error
 }) {
   const fieldId = `id_${name}`; 
-  const isTextArea = type === 'textarea';
+  //const isTextArea = type === 'textarea';
+
   //se for textarea, atribui a const, senao, atribui input 
-  const tag = isTextArea ? 'textarea' : 'input';
+  //const tag = isTextArea ? 'textarea' : 'input';
   const hasSuggestions = Boolean(sugestoes.length);
 
   return (
@@ -94,7 +95,7 @@ function FormField({
         htmlFor={fieldId}
       >
         <Input
-          as= {tag}
+          //as= {tag}
           id={fieldId}
           type={type}
           value={value}
