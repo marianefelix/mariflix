@@ -11,7 +11,7 @@
     },
     {
       "titulo": "Séries",
-      "cor": "#00b8ab",
+      "cor": "var(--primary)",
       "link_extra": {
         "text": "Minhas séries favoritas com mulheres protagonistas"
       },
@@ -19,7 +19,7 @@
     },
     {
       "titulo": "Artistas",
-      "cor": "#00d9ff",
+      "cor": "var(--primary)",
       "link_extra": {
         "text": "Artistas que curto e admiro"
       },
