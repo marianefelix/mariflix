@@ -47,8 +47,10 @@ Execute os seguintes comandos no seu terminal:
 $ git clone https://github.com/marianefelix/mariflix.git
 # Entre no repositório
 $ cd mariflix
-# execute a aplicação
-$ npm run dev || yarn dev
+# Instale as dependências
+$ npm install || yarn install 
+# Execute a aplicação
+$ npm run dev || yarn dev 
 ```
 O front da aplicação estará rodando em: http://localhost:3000/
 
